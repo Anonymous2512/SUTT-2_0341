@@ -12,9 +12,9 @@ const HomePage = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const router = useRouter();
   const login = async () => {
+    const url = "https://sutt-front-task2-d09a14a7c50b.herokuapp.com";
     try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+      const response = await axios.post(`${url}/auth/login`,
         {
           email: email,
           password: password
