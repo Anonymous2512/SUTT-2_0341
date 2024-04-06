@@ -1,0 +1,10 @@
+/* styles/globals.css */
+
+body
+ {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black; /* Set the background color to black */
+  color: white; /* Set the text color to white (optional) */
+}

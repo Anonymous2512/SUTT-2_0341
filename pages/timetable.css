@@ -1,0 +1,125 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .input-container {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+    
+  }
+
+  .input-container input[type="text"] {
+    
+    
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 200px;
+    color: #f5f5f5;
+    background-color:#1d1d1d;
+  }
+  .content{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 100px;
+    margin-left: 20%;
+    margin-right: 2%;
+  }
+  .create-button {
+    padding: 10px 20px;
+    background-color: #2f80ed;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .create-button:hover {
+    background-color: #1e2b37;
+  }
+  
+  .plus-icon {
+    margin-right: 5px;
+    font-size: 20px;
+  }
+  .error-message{
+    font-size: 20px;
+    padding: 2px;
+    width: auto;
+    margin-left:20px;
+    color:#d70505;
+    border:1px solid #d70505;
+    border-radius: 5px;
+    margin-bottom: 2%;
+}
+.success-message{
+    font-size: 20px;
+    padding: 2px;
+    width: auto;
+    margin-left:20px;
+    color:#6aff2f;
+    border:1px solid #6aff2f;
+    border-radius: 5px;
+    
+}
+.timetable-list {
+  margin-top: 30px;
+  list-style: none;
+  
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: flex-start;
+}
+
+.timetable-item {
+  overflow-x: hidden;
+  background-color: #1d1d1d;
+  color: #fff;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height:200px;
+  justify-content: center;
+  margin-right: 20px;
+  margin-bottom: 0px;
+  font-size: 40px;
+  border-radius: 7px;
+  border:1px solid #ccc;
+}
+.timetable-item:hover{
+  background-color: #1e2b37;
+}
+.timetable-item-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.remove{
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 20px;
+  transition: background-color 0.3s;
+  margin-bottom: 20px;
+  
+}
+.remove:hover{
+  background-color: #1e2b37;
+}
+a{
+  text-decoration: none;
+}
