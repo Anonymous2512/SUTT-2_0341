@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import LeftPanel from '../components/LeftPanel';
 import HeadPanel from '../components/HeadPanel';
+import { useRouter } from 'next/router';
 import useActiveButton from '../components/useActiveButton';
 import './index.css';
 import './homepage.css';
+import './calendar.css';
 import './timetable.css';
 
 function TimetablePage() {
@@ -12,7 +14,8 @@ function TimetablePage() {
     const [timetableName, setTimetableName] = useState('');
     const [timetables, setTimetables] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
-
+    
+    const router = useRouter();
     useEffect(() => {
         fetchTimetables();
     }, []);
@@ -34,7 +37,10 @@ function TimetablePage() {
             setErrorMessage('Error fetching timetables');
         }
     };
-
+    const handleTimetableClick = (timetableId) => {
+    localStorage.setItem('selectedTimetableId', timetableId); 
+    router.push('/calendar'); 
+};
     const handleInputChange = (event) => {
         setTimetableName(event.target.value);
     };
@@ -108,7 +114,7 @@ function TimetablePage() {
                 <ul className="timetable-list">
                     {timetables.map(timetable => (
                         <div key={timetable._id} className="timetable-item-container">
-                           <a href={`/calendar`} className="timetable-item">{timetable.name}</a>
+                           <a onClick={() => handleTimetableClick(timetable._id)} className="timetable-item">{timetable.name}</a>
                             <button className="remove" onClick={() => handleRemove(timetable._id)}>Remove</button>
                         </div>
                     ))}

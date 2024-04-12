@@ -60,12 +60,19 @@ function HomePage() {
 
     const filterEventsForToday = () => {
         const today = new Date();
-        const todayDate = today.toISOString().split('T')[0];
+        console.log(today);
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        
+        const todayDate = `${year}-${month}-${day}`;
+        console.log(todayDate);
         const filteredEvents = events.filter(event => {
             const eventStartDate = new Date(event.startTime);
             const eventEndDate = new Date(event.endTime);
             return todayDate >= eventStartDate.toISOString().split('T')[0] && todayDate <= eventEndDate.toISOString().split('T')[0];
         });
+        
         return filteredEvents;
     };
 

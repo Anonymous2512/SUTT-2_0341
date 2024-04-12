@@ -7,7 +7,7 @@ import useActiveButton from '../components/useActiveButton';
 import AddIcon from '@material-ui/icons/Add';
 import './index.css';
 import './homepage.css';
-import "./timetable.css";
+import './timetable.css';
 import './calendar.css';
 
 function CalendarPage() {
@@ -22,7 +22,31 @@ function CalendarPage() {
     const [errorMessage, setErrorMessage] = useState('');
     const [createClicked, setCreateClicked] = useState(false);
     const router = useRouter();
+    const fetchEventsForTimetable = async (timetableId) => {
+        const accessToken = localStorage.getItem('accessToken');
+        const url = "https://sutt-front-task2-d09a14a7c50b.herokuapp.com";
+        try {
+            const response = await axios.get(`${url}/timetables/${timetableId}/events/`, {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            });
+            setEvents(response.data);
+        } catch (error) {
+            console.error('Error fetching events:', error.message);
+        }
+    };
 
+    useEffect(() => {
+        const selectedTimetableId = localStorage.getItem('selectedTimetableId');
+        if (selectedTimetableId) {
+            setTimetableId(selectedTimetableId);
+            localStorage.removeItem('selectedTimetableId'); 
+            
+            fetchEventsForTimetable(selectedTimetableId);
+        
+        }
+    }, []);
     useEffect(() => {
         const fetchTimetables = async () => {
             const accessToken = localStorage.getItem('accessToken');
@@ -46,18 +70,7 @@ function CalendarPage() {
         const selectedTimetableId = event.target.value;
         setTimetableId(selectedTimetableId);
         
-        const accessToken = localStorage.getItem('accessToken');
-        const url = "https://sutt-front-task2-d09a14a7c50b.herokuapp.com";
-        try {
-            const response = await axios.get(`${url}/timetables/${event.target.value}/events/`, {
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`
-                }
-            });
-            setEvents(response.data);
-        } catch (error) {
-            console.error('Error fetching events:', error.message);
-        }
+        fetchEventsForTimetable(selectedTimetableId);
     };
 
     const handleEventNameChange = (event) => {

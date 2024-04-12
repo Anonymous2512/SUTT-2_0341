@@ -3,7 +3,12 @@
     flex-direction: column;
     
   }
-  
+  .head-panel{
+    z-index:1;
+  }
+  .left-panel{
+    z-index:2;
+  }
   .input-container {
    display: flex;
    flex-direction: row;
@@ -73,7 +78,7 @@
 .timetable-list {
   margin-top: 30px;
   list-style: none;
-  
+ z-index:0;
   display: flex;
   flex-wrap: wrap; 
   justify-content: flex-start;

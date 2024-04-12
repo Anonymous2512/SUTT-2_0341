@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useRouter } from 'next/router';
@@ -11,6 +11,7 @@ const HomePage = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
   const router = useRouter();
+
   const login = async () => {
     const url = "https://sutt-front-task2-d09a14a7c50b.herokuapp.com";
     try {
@@ -39,7 +40,7 @@ const HomePage = () => {
         setErrorMessage('Error');
       }
     }
-  };
+  }; 
 
   const handleLogin = () => {
     login(email, password);
